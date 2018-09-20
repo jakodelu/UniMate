@@ -1,0 +1,27 @@
+#p_msg{
+	text-align:center;
+	font-size:15px;
+	margin-top:10px;
+	margin-bottom:20px;
+}
+
+#receiver{
+	font-weight:bold;
+}
+
+#msg_text{
+	width:90%;
+	height:165px;
+	margin-left:5%;
+	margin-bottom:15px;
+}
+
+textarea{
+	border:2px solid grey;
+	border-radius:4px;
+	display:block;
+	margin:10px auto;
+	width:90%;
+	height:100px;
+	resize:none;
+}

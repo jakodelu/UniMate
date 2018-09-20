@@ -1,0 +1,83 @@
+body{
+	text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+	height:auto;
+	margin:0 0 0 0;
+	background-color:#E5E5E1;
+}
+
+p{
+	font-size:11px;
+	font-family:serif;
+	line-height:4px;
+}
+
+p.align{
+	text-align:center;
+}
+
+p.table{
+	margin-left:8px;
+	margin-right:8px;
+}
+
+p.details{
+	font-size:9px;
+	margin-left:8px;
+	margin-right:8px;
+}
+
+div{
+	width:100%;
+	margin:auto auto;
+}
+
+div.box{
+	width:100%;
+	float:left;
+}
+
+input{
+margin-left:10px;
+margin-top:4px;
+border:2px solid grey;
+border-radius:4px;
+}
+
+#container{
+	width:80%;
+	clear:both;
+	display:block;
+	margin-left:10%;
+	margin-top:25%;
+}
+
+#title_box{
+	background-color:#C69C6D;	
+	border:1px solid black;
+	border-radius:20px 0px 0px 0px;
+}
+
+#table_box{
+	border-right:1px solid black;
+	border-left:1px solid black;
+	border-bottom:1px solid black;
+	background-color:#FFFFFF;
+	border-radius:0px 0px 20px 0px;
+}
+
+#login_table{
+	margin: 10px auto;
+}
+
+#details_box{
+	margin:10px auto;	
+}
+
+img#unimate_title{
+	display: block;  
+	margin:auto auto;
+	padding:5px;
+}

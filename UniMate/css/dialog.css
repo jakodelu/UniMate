@@ -1,0 +1,29 @@
+.ui-dialog-titlebar {
+	background-color:#C69C6D !important;
+	color: white !important;
+	text-align:center !important;
+	border-radius:0 0 0 0 !important;
+}
+
+.ui-dialog-content{
+	background-color:#F5F5F5 !important;
+	border-radius:0 0 0 0 !important;
+}
+
+.ui-dialog{
+	position: fixed !important;
+	top:100px !important;
+	border-radius:0 0 0 0 !important;
+}
+
+.ui-widget-overlay{
+	opacity: .70 !important;
+}
+
+input, select{
+border:2px solid grey;
+border-radius:4px;
+display:block;
+margin:auto;
+margin-top:4px;
+}#kind_category{	margin-bottom:10px;}#kind_event{	margin-bottom:10px;}

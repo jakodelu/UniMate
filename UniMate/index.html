@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Index</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<script>
+
+$.ajax({
+
+      type: "GET",
+
+      url: "http://datamanage.altervista.org/sessione.php",
+
+      success: function(msg)
+      {
+			if(!msg){location.href="login.html";}
+			else{location.href="home.html";}
+      },
+      error: function()
+      {
+        alert("Chiamata fallita, si prega di riprovare...");
+      }
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

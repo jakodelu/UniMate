@@ -1,0 +1,250 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="true" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+<title>UniMate</title>
+<link href="css/event_result.css" rel="stylesheet" type="text/css">
+<link href="css/dialog.css" rel="stylesheet" type="text/css" />
+<link href="css/notifiche.css" rel="stylesheet" type="text/css" />
+<link href="css/event_window.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/top_bar_click.js"></script>
+<script src="js/result_event_research.js"></script>
+<script src="js/check.js"></script>
+<script src="js/rete.js"></script>
+
+
+</head>
+
+<body id="body" onload="setInterval('check()', 1000)">
+
+
+<div id="main" name="main"> <!--Main------------------------------------------------------------------------------------>
+
+<div id="header" name="header" class="fixed-box"> <!-- Header ---------------------------------------------------------->
+
+<div id="top_bar" name="top_bar" class="box"> <!-- Top Bar ------------------------------------------------------------->
+
+<div id="home" class="top_block"><img class="image_top" src="img/home.png" onclick="go_home();"></div>
+<div id="inserisci_evento" class="top_block"><img class="image_top" src="img/inserisci.png" onclick="go_add_event();"></div>
+<div id="search" class="top_block">
+	<div class="search_block"><img class="image_top" src="img/list.png" onclick="search_click();"></div>
+	<div class="search_block"><input id="text_search_all" type="text" placeholder=" Cosa sto cercando?" size="17"></div>
+	<div class="search_block"><img class="image_top" id="img_search" src="img/search.png" onclick="search_click_all();"></div>
+</div>
+<div id="logout" class="top_block"><img class="image_top" src="img/logout.png" onclick="logout();"></div>
+
+</div> <!-- Fine Top Bar------------------------------------------------------------------------------------------------>
+
+
+</div> <!-- Fine Header------------------------------------------------------------------------------------------------->
+
+
+
+<div id="content" name="content" class="box"> <!-- Content ------------------------------------------------------------->
+
+<div id="risultati">
+
+<h1 id="ris_ricerca" class="on_left"></h1>
+
+</div>
+
+<div id="table" class="box">
+</div>
+
+
+<!-- <div class="result_box">
+
+<div class="img_box_left"><img class="profile_img" src="profilo.jpeg" alt="No image"/></div>
+
+<div class="info_box">
+<h1 class="align"><span>Nome</span>&ensp;<span>Cognome</span></h1>
+<p class="align">Categoria</p>
+<p class="align">Citt&agrave;</p>
+<p class="align">Universit&agrave;</p>
+<p class="align">Corso</p>
+
+</div>
+
+
+<div class="img_box_right"><img class="vai_img" src="img/vai.png" alt="No image"/></div>
+
+</div> -->
+
+
+
+
+</div> <!-- Fine Content----------------------------------------------------------------------------------------------->
+
+
+
+<div id="footer" name="footer" class="fixed-box"> <!-- Footer --------------------------------------------------------->
+
+<div id="block_network" class="block" onclick="view_rete();"><img class="img_footer" src="img/network_image.png"><p class="p_footer">RETE</p></div>
+<div id="block_event" class="block" onclick="view_event_window();"><img class="img_footer" src="img/event_image.png"><p class="p_footer">EVENTI<p/></div>
+<div id="block_message" class="block" onclick="goto_messages();"><img id="img_msg" class="img_footer" src="img/message.png"><p class="p_footer">MESSAGGI</p></div>
+<div id="block_notification" class="block" onclick="view_notifiche();"><img id="img_notifica" class="img_footer" src="img/notification.png"><p class="p_footer">NOTIFICHE</p></div>
+<div id="block_map" class="block" onclick="mappa();"><img class="img_footer" src="img/map.png"><p class="p_footer">MAPPA</p></div>
+
+</div> <!-- Fine Footer----------------------------------------------------------------------------------------------->
+
+
+
+</div> <!-- Fine Main------------------------------------------------------------------------------------------------->
+
+<!-- Hidden ---->
+
+<!-- Research ------------------------------------------------------------------------------------------------------------------------->
+
+<div id="research_dialog" name="research_dialog" class="dialog" >
+
+<form name="main_form">
+<div>
+	<select id="kind_research" name="kind_research" onchange="choice_research();">
+	<option value="none">-- Ricerca</option>
+	<option value="utente">Utente</option>
+	<option value="evento">Evento</option>
+	</select>
+</div>
+</form>
+
+
+
+
+<form name="utente_form">
+<div id="utente_research" name="utente_research" class="hidden"> <!-- Utente -->
+
+<div id="kind_category_div">
+<select id="kind_category" name="kind_category" onchange="choice_utente();">
+	<option value="none">-- Scegli Categoria</option>
+	<option value="tutti">Tutti</option>
+	<option value="studente">Studente</option>
+	<option value="docente">Docente</option>
+	<option value="azienda">Azienda</option>
+</select>
+</div>
+
+<div id="nome_check_div" class="hidden"><input type="text" name="nome_check" id="nome_check" placeholder=" Nome" ></div>
+<div id="cognome_check_div" class="hidden"><input type="text" name="cognome_check" id="cognome_check" placeholder=" Cognome" ></div>
+<div id="matricola_check_div" class="hidden"><input type="text" name="matricola_check" id="matricola_check" placeholder=" Matricola" ></div>
+<div id="piva_check_div" class="hidden"><input type="text" name="piva_check" id="piva_check" placeholder=" P.Iva" ></div>
+<div id="matr_piva_check_div" class="hidden"><input type="text" name="matr_piva_check" id="matr_piva_check" placeholder=" Matricola / P.Iva" ></div>
+<div id="universita_check_div" class="hidden"><input type="text" name="universita_check" id="universita_check" placeholder=" Università" ></div>
+<div id="facolta_check_div" class="hidden"><input type="text" name="facolta_check" id="facolta_check" placeholder=" Facoltà" ></div>
+<div id="corso_check_div" class="hidden"><input type="text" name="corso_check" id="corso_check" placeholder=" Corso di Studi" ></div>
+
+<div><input id="utente_research_button" type="button" value="Cerca" ></div>
+</div>
+</form>
+
+<form name="evento_form">
+<div id="evento_research" class="hidden"> <!-- Evento -->
+
+
+
+<div id="kind_event_div">
+<select id="kind_event" name="kind_event">
+	<option value="none">-- Scegli Categoria</option>
+	<option value="tutti">Tutti</option>
+	<option value="seminario">Seminario</option>
+	<option value="laboratorio">Laboratorio</option>
+	<option value="ritrovo">Ritrovo/Festa</option>
+	<option value="lezione">Lezione</option>
+	<option value="ricevimento">Ricevimento</option>
+	<option value="servizio">Servizio Università</option>
+	<option value="lavoro">Offerta Lavoro</option>
+</select>
+</div>
+<div id="nome_evento_div"><input type="text" name="nome_evento" id="nome_evento" placeholder=" Nome" ></div>
+<div id="citta_evento_div"><input type="text" name="citta_evento" id="citta_evento" placeholder=" Città e CAP" ></div>
+
+<div><input id="evento_research_button" type="button" value="Cerca" ></div>
+</div>
+</form>
+
+
+</div>
+
+
+<!-- Fine Research ---------------------------------------------------------------------------------------------------------------------------->
+
+<!-- Notification ----------------------------------------------------------------------------------------------------------------------------->
+
+
+<div id="notification_box" class="notification_box"> 
+
+<div class="title_notification"><h1 class="title_notification">Notifiche</h1></div>
+
+<div id="content_notifiche" class="content_notifiche">
+<p id="no_notification">Non ci sono nuove notifiche</p>
+
+<!-- <div class="notifica">
+<p class="p_notifica_amicizia"><span class="from_db">Jacopo</span><span class="from_db"> De Luca</span> (<span>categoria</span>) ha iniziato a seguirti!<p>
+</div>
+
+<div class="notifica">
+<p class="p_notifica_evento"><span class="from_db">Jacopo</span><span class="from_db"> De Luca</span> (<span>categoria</span>) parteciperà al tuo evento!<p>
+</div>
+
+<div class="notifica">
+<p class="p_notifica_voto"><span class="from_db">Jacopo</span><span class="from_db"> De Luca</span> (<span>categoria</span>) ha valutato il tuo evento!<p>
+</div>
+
+<div class="notifica">
+<p class="p_notifica_voto"><span class="from_db">Jacopo</span><span class="from_db"> De Luca</span> (<span>categoria</span>) ha valutato il tuo evento!<p>
+</div> -->
+
+</div>
+
+</div>
+
+<!-- Fine Notification ---------------------------------------------------------------------------------------------------------------------------->
+
+
+<!-- Event Window ----------------------------------------------------------------------------------------------------------------------------->
+
+<div id="event_window" class="event_window"> 
+
+<div class="title_event_window">
+<h1 class="title_event_window">Eventi</h1>
+</div>
+
+<div id="content_event" class="content_event">
+
+<div class="kind_event_choice">
+<div class="box"><img class="event_img" src="img/your_event_icon.png" onclick="your_events();"></div>
+<p class="p_event">I TUOI<br>EVENTI</p>
+</div>
+
+<div class="kind_event_choice">
+<div class="box"><img class="event_img" src="img/joined_event_icon.png" onclick="joined_events();"></div>
+<p class="p_event">EVENTI A CUI<br>PARTECIPI</p>
+</div>
+
+<div class="kind_event_choice">
+<div class="box"><img class="event_img" src="img/look_event_icon.png" onclick="look_events();"></div>
+<p id="p_guarda_eventi" class="p_event">GUARDA<br>EVENTI</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- Fine Event Window ---------------------------------------------------------------------------------------------------------------------------->
+
+
+<script src="js/footer.js"></script>
+<script src="js/ricerca_avanzata.js"></script>
+<script src="js/ricerca_utente.js"></script>
+<script src="js/notifiche.js"></script>
+<script src="js/event_window.js"></script>
+<script src="js/ricerca_evento.js"></script>
+
+</body>
+</html>

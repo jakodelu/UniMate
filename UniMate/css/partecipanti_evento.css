@@ -1,0 +1,14 @@
+.part_img{
+	width:50px;
+	height:50px;
+	margin:5px;
+	display:block;
+	float:left;
+	border: 3px solid #C69C6D;
+	border-radius:10px 10px 10px 10px;
+	object-fit:cover;
+}
+
+#partecipanti{
+	margin:0 auto;	
+}
